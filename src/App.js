@@ -1,4 +1,5 @@
 import React, {Component} from "react";
+import General from "./components/General";
 
 class App extends Component{
   constructor() {
@@ -17,7 +18,8 @@ class App extends Component{
         text:'',
         content:''
     },
-  }
+    genInfo: '',
+  };
 }
 
   handleChange = (e) => {
@@ -25,20 +27,26 @@ class App extends Component{
 
     this.setState({
       [e.target.name]: {
-        content: value
+        text: value
       }
     })
   }
 
+
   genInfoSubmit = (e) => {
-    // const value = e.target.value
+    const value = e.target.value
+    
   e.preventDefault();
   this.setState ({
-    // ...state,
+
+    [e.target.name]: {
+      content: value
+    },
     Name: {text:''},
     Email: {text:''},
     PhoneNumber: {text:''}
   });
+
   }
 
   render(){
@@ -76,7 +84,7 @@ class App extends Component{
             <input type="text" id="JobTasks" ></input><br/>
           </form>
         </div>
-        <General value = {value}/>
+        <General name={Name.content} email ={Email.content} phone ={PhoneNumber.content}/>
         <div id="educationContent"></div>
         <div id="experienceContent"></div>
       </div>

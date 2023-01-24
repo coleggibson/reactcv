@@ -1,11 +1,11 @@
 import React from "react";
 
-const General = (props) => {
+const General = ({name, email, phone}) => {
     return (
     <div>
-        <div>{Name.content}</div>
-        <div>{Email.content}</div>
-        <div>{PhoneNumber.content}</div>
+        <div>{name}</div>
+        <div>{email}</div>
+        <div>{phone}</div>
     </div>
     );
 };
