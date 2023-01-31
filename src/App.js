@@ -1,9 +1,11 @@
 import React, {Component} from "react";
 import General from "./components/General";
+import {useState} from "react";
+
 
 class App extends Component{
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
 
     this.state = {
       Name: {
@@ -18,33 +20,38 @@ class App extends Component{
         text:'',
         content:''
     },
-    genInfo: '',
+    
   };
 }
+
+
 
   handleChange = (e) => {
     const value = e.target.value
 
     this.setState({
       [e.target.name]: {
-        text: value
+        content: value
       }
     })
   }
-
+  // storeValues = () => {
+  //   this.setState({
+  //   [e.target.name]: {
+  //     content:
+  //   }
+  // })
+  // }
 
   genInfoSubmit = (e) => {
-    const value = e.target.value
-    
+  console.log(this.state.Name)
   e.preventDefault();
   this.setState ({
-
-    [e.target.name]: {
-      content: value
-    },
-    Name: {text:''},
-    Email: {text:''},
-    PhoneNumber: {text:''}
+    
+    Name: {text:'', content:this.state.Name.content},
+    Email: {text:'',content:this.state.Email.content},
+    PhoneNumber: {text:''},
+    
   });
 
   }
@@ -54,9 +61,9 @@ class App extends Component{
       return (
       <div>
         <div id="General">General Information
-          <form onSubmit={this.genInfoSubmit}>
+          <form onSubmit={this.genInfoSubmit.bind(this)}>
             <label htmlFor="taskInput">Name:</label><br/>
-            <input type="text" name="Name" value={Name.text} onChange={this.handleChange}></input><br/>
+            <input type="text" name="Name" value={Name.text} onChange={this.handleChange.bind(this)}></input><br/>
             <label htmlFor="taskInput">Email:</label><br/>
             <input type="text" name="Email" value={Email.text} onChange={this.handleChange}></input><br/>
             <label htmlFor="taskInput">Phone Number:</label><br/>
